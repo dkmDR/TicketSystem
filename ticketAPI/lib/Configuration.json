@@ -1,0 +1,31 @@
+{
+    "useDatabase"                                   :       true,
+    "appInDeveloping"                               :       true,
+    "instanceDatabase"                              :       "Mysqli",
+    
+    "title"                                         :       "API",
+    
+    "server"                                        :       "http://localhost/",
+    "defaultKeyRouting"                             :       "docs",
+    
+    "dirModules"                                    :       "apps",
+    "dirLayouts"                                    :       "layouts",
+    "mainHeaderLayout"                              :       "Header",
+    "mainFooterLayout"                              :       "Footer",
+    "dirProject"                                    :       "ticketAPI/",
+    "dirLogs"                                       :       "logs",
+    "dirMainFileJs"                                 :       "js",
+    "dirMainFileCss"                                :       "css",
+    
+    "fileLayoutError"                               :       "Error",
+
+    "useStorageSession"                             :       false,
+    "storageTable"                                  :       "sessions",
+    "primaryKeyField"                               :       "record_id",
+    "storageIdField"                                :       "session_id",
+    "StorageDataField"                              :       "session_data",
+
+    "localservers"                                  :       "localhost,127.0.0.1,localhost:8080",
+    "cors"                                          :       true,
+    "version"                                       :       "2.3"
+}

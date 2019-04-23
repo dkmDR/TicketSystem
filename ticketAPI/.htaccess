@@ -1,0 +1,52 @@
+# =================================================
+# Condition to check whether the module on 
+# writing url is active on the server
+#--------------------------------------------------
+
+#si deseo mostrar carpetas solo poner + en caso contrario -
+Options -Indexes
+#archivo por defecto index.php a ejecutar
+DirectoryIndex index.php
+
+#RedirectMatch 404 ^(.*)$ 127.0.0.1
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	#no podria utilizar la base debido a que redirecciona totalmente fuera del documento
+	#RewriteBase /
+	#regla indicando que todas las peticiones irian al index
+	RewriteRule ^$ index.php [QSA,L]
+	#esto es para que tome en cuenta cualquier carpeta o archivo que no exista y la almacene dentro de la variable $1
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	#si utilizo regla deberia controlar el caracter que utilizaria para dividir la entrada
+	#RewriteRule ^([a-zA-Z0-9-\-]*)$ index.php?url=$1 [QSA,L]
+	#si permito todas las entradas podria controlar que especificamente deseo manejar
+	RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+# example
+#<Files "configuration.json">
+#Order Allow,Deny
+#Deny from all
+#</Files>
+
+#Protect all file in framework
+<FilesMatch "configuration\.json|Config\.php|Autoloader\.php|Factory\.php|bootstrap\.php|Layout\.php|Post\.php|Web\.php|Route\.php|Filter\.php">
+  #Apache 2.2
+  Order allow,deny
+  Deny from all
+  #Apache 2.4
+  #Require all denied
+</FilesMatch>
+
+
+# =================================================
+#esta condicion es para eliminar los mensajes de errores de php
+#<IfModule mod_php5.c>
+#	php_flag display_errors Off
+#</IfModule>
