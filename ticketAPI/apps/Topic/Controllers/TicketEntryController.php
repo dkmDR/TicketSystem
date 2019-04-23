@@ -114,11 +114,15 @@ class TicketEntryController extends Acontroller
             if ( !Validator::notEmpty()->validate($note) ) {
                 throw new RuntimeException("Note could not be empty");
             }
+			
+			$dateFromResource = $model->query("SELECT CAST('$date_from' AS DATETIME) as date_from")->getObject();
+			
+			$dateToResource = $model->query("SELECT CAST('$date_to' AS DATETIME) as date_to")->getObject();
 
             $model->setTicketId($ticket_id);
             $model->setEmployeeId($employee_id);
-            $model->setDateFrom($date_from);
-            $model->setDateTo($date_to);
+            $model->setDateFrom($dateFromResource->date_from);
+            $model->setDateTo($dateToResource->date_to);
             $model->setNote($note);
 
             $entry_id = $model->process();

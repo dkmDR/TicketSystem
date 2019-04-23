@@ -165,8 +165,10 @@ class TicketController extends Acontroller
                 throw new RuntimeException("Description could not be empty");
             }
 
+			$dateResource = $model->query("SELECT CAST('$date' AS DATETIME) as ticket_date")->getObject();
+			
             $model->setTicketId($ticket_id);
-            $model->setTicketDate($date);
+            $model->setTicketDate($dateResource->ticket_date);
             $model->setSubject($subject);
             $model->setStatusId($status);
             $model->setTicketDescription($ticket_description);
