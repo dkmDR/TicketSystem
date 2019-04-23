@@ -27,7 +27,7 @@ or
 #Version
 
 Version PHP >= 5.6
-Version Mysql >= 5.6
+Version Mysql >= 5.7
 Node 10.15.3 LTS
 NPM
 
@@ -37,7 +37,7 @@ install nodeJS version 10.15.3 LTS & npm
 
 Into the project there is a folder with PHP API (ticketAPI)
 
-You must put the directory into apache folder
+You must put this directory into apache folder
 
 Like
 
